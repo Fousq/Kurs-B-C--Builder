@@ -14,6 +14,7 @@
 #include <Grids.hpp>
 #include <DBCtrls.hpp>
 #include <ExtCtrls.hpp>
+#include <Mask.hpp>
 //---------------------------------------------------------------------------
 class TMainForm : public TForm
 {
@@ -35,9 +36,7 @@ __published:	// IDE-managed Components
         TTabSheet *DeadsSheet;
         TDBGrid *DBGrid1;
         TDBGrid *DBGrid2;
-        TGroupBox *AddGB;
-        TGroupBox *EditGB;
-        TGroupBox *DeleteGB;
+        TGroupBox *GroupBox;
         TButton *AddButton;
         TButton *EditButton;
         TButton *DeleteButton;
@@ -63,9 +62,24 @@ __published:	// IDE-managed Components
         TDBText *DBText6;
         TDBText *DBText7;
         TDBText *DBText8;
+        TDBEdit *DBEdit1;
+        TDBEdit *DBEdit2;
+        TDBEdit *DBEdit3;
+        TDBEdit *DBEdit4;
+        TLabel *Label14;
+        TLabel *Label15;
+        TDBEdit *DBEdit5;
+        TDBEdit *DBEdit6;
+        TDBMemo *DBMemo1;
+        TDBEdit *DBEdit7;
+        TLabel *Label16;
+        TButton *CancelButton;
+        TButton *ConfirmButton;
         void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
         void __fastcall FormCreate(TObject *Sender);
         void __fastcall AddButtonClick(TObject *Sender);
+        void __fastcall PageControl1Change(TObject *Sender);
+        void __fastcall ConfirmButtonClick(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
         __fastcall TMainForm(TComponent* Owner);
