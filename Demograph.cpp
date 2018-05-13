@@ -5,6 +5,7 @@
 //---------------------------------------------------------------------------
 USEFORM("MainUnit.cpp", MainForm);
 USEFORM("DataModule.cpp", DataModule1); /* TDataModule: File Type */
+USEFORM("ReportUnit.cpp", ReportForm);
 //---------------------------------------------------------------------------
 WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 {
@@ -13,6 +14,7 @@ WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
                  Application->Initialize();
                  Application->CreateForm(__classid(TMainForm), &MainForm);
                  Application->CreateForm(__classid(TDataModule1), &DataModule1);
+                 Application->CreateForm(__classid(TReportForm), &ReportForm);
                  Application->Run();
         }
         catch (Exception &exception)

@@ -4,12 +4,12 @@
   <MACROS>
     <VERSION value="BCB.06.00"/>
     <PROJECT value="Demograph.exe"/>
-    <OBJFILES value="Demograph.obj MainUnit.obj DataModule.obj"/>
+    <OBJFILES value="Demograph.obj MainUnit.obj DataModule.obj ReportUnit.obj"/>
     <RESFILES value="Demograph.res"/>
     <IDLFILES value=""/>
     <IDLGENFILES value=""/>
     <DEFFILE value=""/>
-    <RESDEPEN value="$(RESFILES) MainUnit.dfm DataModule.dfm"/>
+    <RESDEPEN value="$(RESFILES) MainUnit.dfm DataModule.dfm ReportUnit.dfm"/>
     <LIBFILES value=""/>
     <LIBRARIES value=""/>
     <SPARELIBS value="vcl.lib rtl.lib dbrtl.lib bdertl.lib vcldb.lib"/>
@@ -58,6 +58,7 @@
       <FILE FILENAME="Demograph.cpp" FORMNAME="" UNITNAME="Demograph" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="MainUnit.cpp" FORMNAME="MainForm" UNITNAME="MainUnit" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="DataModule.cpp" FORMNAME="DataModule1" UNITNAME="DataModule" CONTAINERID="CCompiler" DESIGNCLASS="TDataModule" LOCALCOMMAND=""/>
+      <FILE FILENAME="ReportUnit.cpp" FORMNAME="ReportForm" UNITNAME="ReportUnit" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
   </FILELIST>
   <BUILDTOOLS>
   </BUILDTOOLS>

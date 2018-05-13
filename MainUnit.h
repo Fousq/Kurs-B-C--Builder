@@ -63,7 +63,6 @@ __published:	// IDE-managed Components
         TDBText *DBText7;
         TDBText *DBText8;
         TDBEdit *DBEdit1;
-        TDBEdit *DBEdit2;
         TDBEdit *DBEdit3;
         TDBEdit *DBEdit4;
         TLabel *Label14;
@@ -75,11 +74,26 @@ __published:	// IDE-managed Components
         TLabel *Label16;
         TButton *CancelButton;
         TButton *ConfirmButton;
+        TDBComboBox *DBComboBox1;
         void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
-        void __fastcall FormCreate(TObject *Sender);
         void __fastcall AddButtonClick(TObject *Sender);
         void __fastcall PageControl1Change(TObject *Sender);
         void __fastcall ConfirmButtonClick(TObject *Sender);
+        void __fastcall FormShow(TObject *Sender);
+        void __fastcall EditButtonClick(TObject *Sender);
+        void __fastcall DeleteButtonClick(TObject *Sender);
+        void __fastcall CancelButtonClick(TObject *Sender);
+        void __fastcall AopenExecute(TObject *Sender);
+        void __fastcall AexitExecute(TObject *Sender);
+        void __fastcall AopenRepExecute(TObject *Sender);
+        void __fastcall DBEdit1Click(TObject *Sender);
+        void __fastcall DBEdit3Click(TObject *Sender);
+        void __fastcall DBEdit4Click(TObject *Sender);
+        void __fastcall DBEdit5Click(TObject *Sender);
+        void __fastcall DBEdit6Click(TObject *Sender);
+        void __fastcall DBEdit7Click(TObject *Sender);
+        void __fastcall DBComboBox1Click(TObject *Sender);
+        void __fastcall DBMemo1Click(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
         __fastcall TMainForm(TComponent* Owner);

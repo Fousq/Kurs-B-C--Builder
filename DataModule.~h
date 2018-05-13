@@ -15,10 +15,8 @@ class TDataModule1 : public TDataModule
 __published:	// IDE-managed Components
         TDataSource *NewbornsDS;
         TDataSource *DeadsDS;
-        TDataSource *ReasonsDS;
         TTable *NewbornsTable;
         TTable *DeadsTable;
-        TTable *ReasonsTable;
 private:	// User declarations
 public:		// User declarations
         __fastcall TDataModule1(TComponent* Owner);

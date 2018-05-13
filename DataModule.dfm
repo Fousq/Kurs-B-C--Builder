@@ -1,7 +1,7 @@
 object DataModule1: TDataModule1
   OldCreateOrder = False
-  Left = 480
-  Top = 387
+  Left = 677
+  Top = 480
   Height = 264
   Width = 286
   object NewbornsDS: TDataSource
@@ -17,7 +17,7 @@ object DataModule1: TDataModule1
   object NewbornsTable: TTable
     DatabaseName = 'Records'
     TableName = 'Newborns.DB'
-    Left = 48
+    Left = 40
     Top = 24
   end
   object DeadsTable: TTable
