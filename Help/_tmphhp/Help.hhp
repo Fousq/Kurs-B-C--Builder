@@ -1,0 +1,29 @@
+[OPTIONS]
+TITLE=YourProject
+Full-text search=Yes
+Display compile notes=YES
+Display compile progress=YES
+Compatibility=1.1
+Default Window=Main
+Compiled file=Help.chm
+Error Log file=Help.log
+Contents file=Help.hhc
+Index File=Help.hhk
+Default Topic=topic3.html
+
+[FILES]
+topic1.html
+topic2.html
+topic3.html
+
+
+[WINDOWS]
+Main="Main","Help.hhc","Help.hhk","","", ,,,,0x061520,200, 0x00304E, [271, 322, 643, 516]  , 0x307e, , , , , , , , 0
+Popup="Popup","Help.hhc","Help.hhk","","", ,,,,0x061520,200, 0x00304E, [271, 322, 643, 516]  , 0x307e, , , , , , , , 0
+
+
+[MAP]
+#include Help.h
+
+[TEXT POPUPS]
+CSHelp.txt
