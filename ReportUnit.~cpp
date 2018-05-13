@@ -4,6 +4,7 @@
 #pragma hdrstop
 
 #include "ReportUnit.h"
+//bout ReportForm to MainForm
 #include "MainUnit.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
@@ -19,6 +20,7 @@ __fastcall TReportForm::TReportForm(TComponent* Owner)
 void __fastcall TReportForm::FormClose(TObject *Sender,
       TCloseAction &Action)
 {
+        //when report form closed, then back to main form
         MainForm->Show();
         ReportForm->Hide();
 }

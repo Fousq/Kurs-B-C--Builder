@@ -1,6 +1,6 @@
 object ReportForm: TReportForm
-  Left = 330
-  Top = 412
+  Left = 263
+  Top = 325
   Width = 870
   Height = 640
   Caption = 'ReportForm'
