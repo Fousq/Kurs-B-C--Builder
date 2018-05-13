@@ -25,18 +25,22 @@ void __fastcall TMainForm::FormClose(TObject *Sender, TCloseAction &Action)
         //Deactivate all data bases
         DataModule1->NewbornsTable->Active = false;
         DataModule1->DeadsTable->Active = false;
+        DataModule1->ReasonTable->Active = false;
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TMainForm::FormShow(TObject *Sender)
 {
         //Hide all panels
+        ReasonGB->Hide();
         GroupBox->Hide();
         //Active data bases
         DataModule1->NewbornsTable->Active = true;
         DataModule1->NewbornsTable->Open();
         DataModule1->DeadsTable->Active = true;
         DataModule1->DeadsTable->Open();
+        DataModule1->ReasonTable->Active = true;
+        DataModule1->ReasonTable->Open();
         //Focused on first page
         PageControl1->ActivePage = NewbornsSheet;
 
@@ -68,9 +72,15 @@ void __fastcall TMainForm::AddButtonClick(TObject *Sender)
         //if button "Add" was clicked
         DBComboBox1->Items->Add("Муржской");
         DBComboBox1->Items->Add("Женский");
-        GroupBox->Caption = "Добавить запись";
+        if (PageControl1->ActivePage == ReasonsSheet)
+        {
+                ReasonGB->Caption = "Добавить запись";
+        }
+        else
+        {
+                GroupBox->Caption = "Добавить запись";
+        }
         InformationPanel->Hide();
-        GroupBox->Show();
         GroupBox->Top = 24;
         GroupBox->Left = 520;
         //determine which page is now
@@ -90,17 +100,25 @@ void __fastcall TMainForm::AddButtonClick(TObject *Sender)
                 Label15->Hide();
                 DBEdit6->Hide();
                 Label16->Hide();
-                DBEdit7->Hide();
+                DBComboBox2->Hide();
+                Edit1->Hide();
                 Label5->Top = 152;
                 DBMemo1->Top = 164;
                 Label5->Show();
                 DBMemo1->Show();
+                GroupBox->Show();
                 //Prepare data base to add new record
                 DataModule1->NewbornsTable->Append();
         }
 
         if (PageControl1->ActivePage == DeadsSheet)
         {
+                DataModule1->ReasonTable->First();
+                for (int i = 1; i <= DataModule1->ReasonTable->RecordCount; i++)
+                {
+                        DBComboBox2->Items->Add(DataModule1->ReasonTable->FieldByName("ReasonOfDeath")->AsString);
+                        DataModule1->ReasonTable->Next();
+                }
                 //if page is "Deads"
                 DBEdit1->DataSource = DataModule1->DeadsDS;
                 DBEdit1->DataField = "FIO";
@@ -117,9 +135,17 @@ void __fastcall TMainForm::AddButtonClick(TObject *Sender)
                 Label15->Show();
                 DBEdit6->Show();
                 Label16->Show();
-                DBEdit7->Show();
+                DBComboBox2->Show();
+                GroupBox->Show();
                 //Prepare data base to add new record
                 DataModule1->DeadsTable->Append();
+        }
+
+        if (PageControl1->ActivePage == ReasonsSheet)
+        {
+                MainForm->Height = 692;
+                ReasonGB->Show();
+                DataModule1->ReasonTable->Append();
         }
 }
 //---------------------------------------------------------------------------
@@ -236,10 +262,19 @@ void __fastcall TMainForm::ConfirmButtonClick(TObject *Sender)
                         ErrorMessage += " Место смерти";
                 }
 
-                if (DBEdit7->Text == "")
+                if (DBComboBox2->Text == "Другое")
+                {
+                        if (Edit1->Text == "")
+                        {
+                                Empty = true;
+                                Edit1->Color = clRed;
+                                ErrorMessage += " Причина смерти";
+                        }
+                }
+                else if (DBComboBox2->Text == "")
                 {
                         Empty = true;
-                        DBEdit7->Color = clRed;
+                        DBComboBox2->Color = clRed;
                         ErrorMessage += " Причина смерти";
                 }
 
@@ -251,6 +286,10 @@ void __fastcall TMainForm::ConfirmButtonClick(TObject *Sender)
                 }
                 else
                 {
+                        if (DBComboBox2->Text == "Другое")
+                        {
+                                DataModule1->DeadsTable->FieldByName("ReasonOfDeath")->AsString = Edit1->Text;
+                        }
                         //get the confirmation
                         if (Application->MessageBoxA("Корректно ли вы ввели все данные?", "Подтверждение", MB_YESNO | MB_ICONQUESTION) == IDYES)
                         {
@@ -265,6 +304,7 @@ void __fastcall TMainForm::ConfirmButtonClick(TObject *Sender)
         }
         //for refrashing
         DBComboBox1->Clear();
+        DBComboBox2->Clear();
 }
 //---------------------------------------------------------------------------
 
@@ -273,9 +313,15 @@ void __fastcall TMainForm::EditButtonClick(TObject *Sender)
         //Edit was clicked
         DBComboBox1->Items->Add("Муржской");
         DBComboBox1->Items->Add("Женский");
-        GroupBox->Caption = "Редактировать запись";
+        if (PageControl1->ActivePage == ReasonsSheet)
+        {
+                ReasonGB->Caption = "Редактировать запись";
+        }
+        else
+        {
+                GroupBox->Caption = "Редактировать запись";
+        }
         InformationPanel->Hide();
-        GroupBox->Show();
         GroupBox->Top = 24;
         GroupBox->Left = 520;
 
@@ -293,13 +339,16 @@ void __fastcall TMainForm::EditButtonClick(TObject *Sender)
                 Label14->Hide();
                 DBEdit5->Hide();
                 Label15->Hide();
-                DBEdit6->Hide();
+                DBComboBox2->Hide();
+                Edit1->Hide();
                 Label16->Hide();
-                DBEdit7->Hide();
+                DBComboBox2->Hide();
+                Edit1->Hide();
                 Label5->Top = 152;
                 DBMemo1->Top = 164;
                 Label5->Show();
                 DBMemo1->Show();
+                GroupBox->Show();
                 //turn our data base to edit mode
                 DataModule1->NewbornsTable->Edit();
         }
@@ -307,6 +356,12 @@ void __fastcall TMainForm::EditButtonClick(TObject *Sender)
         if (PageControl1->ActivePage == DeadsSheet)
         {
                 //if page is "Deads"
+                DataModule1->ReasonTable->First();
+                for (int i = 1; i <= DataModule1->ReasonTable->RecordCount; i++)
+                {
+                        DBComboBox2->Items->Add(DataModule1->ReasonTable->FieldByName("ReasonOfDeath")->AsString);
+                        DataModule1->ReasonTable->Next();
+                }
                 DBEdit1->DataSource = DataModule1->DeadsDS;
                 DBEdit1->DataField = "FIO";
                 DBComboBox1->DataSource = DataModule1->DeadsDS;
@@ -322,9 +377,18 @@ void __fastcall TMainForm::EditButtonClick(TObject *Sender)
                 Label15->Show();
                 DBEdit6->Show();
                 Label16->Show();
-                DBEdit7->Show();
+                DBComboBox2->Show();
+                Edit1->Show();
+                GroupBox->Show();
                 //turn our data base to edit mode
                 DataModule1->DeadsTable->Edit();
+        }
+
+        if (PageControl1->ActivePage == ReasonsSheet)
+        {
+                MainForm->Height = 692;
+                ReasonGB->Show();
+                DataModule1->ReasonTable->Edit();
         }
 }
 //---------------------------------------------------------------------------
@@ -345,6 +409,12 @@ void __fastcall TMainForm::DeleteButtonClick(TObject *Sender)
                 {
                         //delete record in data base "Deads"
                         DataModule1->DeadsTable->Delete();
+                }
+
+                if (PageControl1->ActivePage == ReasonsSheet)
+                {
+                        //
+                        DataModule1->ReasonTable->Delete();
                 }
         }
 }
@@ -371,6 +441,39 @@ void __fastcall TMainForm::CancelButtonClick(TObject *Sender)
         }
         //for refrashing
         DBComboBox1->Clear();
+        DBComboBox2->Clear();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TMainForm::RConfirmButtonClick(TObject *Sender)
+{
+        if (DBEdit2->Text == "")
+        {
+                DBEdit2->Color = clRed;
+                Application->MessageBoxA("", "", MB_ICONERROR | MB_OK);
+        }
+        else
+        {
+                //get the confirmation
+                if (Application->MessageBoxA("Корректно ли вы ввели все данные?", "Подтверждение", MB_YESNO | MB_ICONQUESTION) == IDYES)
+                {
+                        //if "Yes" was clicked
+                        //add  or change record
+                        DataModule1->ReasonTable->Post();
+                        ReasonGB->Hide();
+                        MainForm->Height = 540;
+                        MainForm->Width = 540;
+                }
+        }
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TMainForm::RCancelButtonClick(TObject *Sender)
+{
+        DataModule1->ReasonTable->Cancel();
+        ReasonGB->Hide();
+        MainForm->Height = 540;
+        MainForm->Width = 540;
 }
 //---------------------------------------------------------------------------
 /*                         PageControl's Events                            */
@@ -384,7 +487,9 @@ void __fastcall TMainForm::PageControl1Change(TObject *Sender)
                 //if page was chenged while being in some data base operation
                 //cancel this operation
                 DataModule1->DeadsTable->Cancel();
+                DataModule1->ReasonTable->Cancel();
                 GroupBox->Hide();
+                ReasonGB->Hide();
                 DBText1->DataSource = DataModule1->NewbornsDS;
                 DBText1->DataField = "FIO";
                 DBText2->DataSource = DataModule1->NewbornsDS;
@@ -401,6 +506,8 @@ void __fastcall TMainForm::PageControl1Change(TObject *Sender)
                 DBText7->Hide();
                 Label13->Top = 112;
                 DBText8->Top = 132;
+                MainForm->Width = 966;
+                MainForm->Height = 536;
                 Label13->Show();
                 DBText8->Show();
                 //change some fields and then show them
@@ -411,7 +518,9 @@ void __fastcall TMainForm::PageControl1Change(TObject *Sender)
         {
                 //the same
                 DataModule1->NewbornsTable->Cancel();
+                DataModule1->ReasonTable->Cancel();
                 GroupBox->Hide();
+                ReasonGB->Hide();
                 DBText1->DataSource = DataModule1->DeadsDS;
                 DBText1->DataField = "FIO";
                 DBText2->DataSource = DataModule1->DeadsDS;
@@ -428,7 +537,19 @@ void __fastcall TMainForm::PageControl1Change(TObject *Sender)
                 DBText7->Show();
                 Label13->Hide();
                 DBText8->Hide();
+                MainForm->Width = 966;
+                MainForm->Height = 536;
                 InformationPanel->Show();
+        }
+
+        if (PageControl1->ActivePage == ReasonsSheet)
+        {
+                DataModule1->NewbornsTable->Cancel();
+                DataModule1->DeadsTable->Cancel();
+                InformationPanel->Hide();
+                GroupBox->Hide();
+                MainForm->Height = 540;
+                MainForm->Width = 540;
         }
 }
 //---------------------------------------------------------------------------
@@ -469,6 +590,12 @@ void __fastcall TMainForm::DBEdit1Click(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
+void __fastcall TMainForm::DBEdit2Click(TObject *Sender)
+{
+        DBEdit2->Color = clWindow;
+}
+//---------------------------------------------------------------------------
+
 void __fastcall TMainForm::DBEdit3Click(TObject *Sender)
 {
         DBEdit3->Color = clWindow;
@@ -492,12 +619,6 @@ void __fastcall TMainForm::DBEdit6Click(TObject *Sender)
         DBEdit6->Color = clWindow;        
 }
 //---------------------------------------------------------------------------
-
-void __fastcall TMainForm::DBEdit7Click(TObject *Sender)
-{
-        DBEdit7->Color = clWindow;
-}
-//---------------------------------------------------------------------------
 /*                         DBComboBox                                      */
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::DBComboBox1Click(TObject *Sender)
@@ -505,11 +626,46 @@ void __fastcall TMainForm::DBComboBox1Click(TObject *Sender)
         DBComboBox1->Color = clWindow;
 }
 //---------------------------------------------------------------------------
-/*                          DBMemo                                         */
-//---------------------------------------------------------------------------
-void __fastcall TMainForm::DBMemo1Click(TObject *Sender)
-{
-        DBMemo1->Color = clWindow;
-}
-//---------------------------------------------------------------------------
 
+void __fastcall TMainForm::DBComboBox2Click(TObject *Sender)
+{
+        DBComboBox2->Color = clWindow;
+        if (DBComboBox2->Text == "Другое")
+        {
+                Edit1->Clear();
+                Edit1->Show();
+        }
+        else
+        {
+                Edit1->Hide();
+        }
+}
+//-------------------------------------//---------------------------------------------------------------------------
+
+#ifndef ReportUnitH
+#define ReportUnitH
+//---------------------------------------------------------------------------
+#include <Classes.hpp>
+#include <Controls.hpp>
+#include <StdCtrls.hpp>
+#include <Forms.hpp>
+#include <ExtCtrls.hpp>
+#include <QuickRpt.hpp>
+#include <QRCtrls.hpp>
+//---------------------------------------------------------------------------
+class TReportForm : public TForm
+{
+__published:	// IDE-managed Components
+        TQuickRep *QuickRep1;
+        TQRBand *QRBand1;
+        TQRLabel *QRLabel1;
+        TQRLabel *QRLabel2;
+        TQRMemo *QRMemo1;
+        TQRMemo *QRMemo2;
+        TQRStringsBand *QRStringsBand1;
+        TQRStringsBand *QRStringsBand2;
+        TQRLabel *QRLabel3;
+        TQRMemo *QRMemo3;
+        TQRMemo *QRMemo4;
+        TQRMemo *QRMemo5;
+        TQRString

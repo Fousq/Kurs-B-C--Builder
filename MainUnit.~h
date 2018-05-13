@@ -30,7 +30,6 @@ __published:	// IDE-managed Components
         TMenuItem *N3;
         TMenuItem *N4;
         TMenuItem *N5;
-        TMenuItem *N6;
         TPageControl *PageControl1;
         TTabSheet *NewbornsSheet;
         TTabSheet *DeadsSheet;
@@ -70,11 +69,20 @@ __published:	// IDE-managed Components
         TDBEdit *DBEdit5;
         TDBEdit *DBEdit6;
         TDBMemo *DBMemo1;
-        TDBEdit *DBEdit7;
         TLabel *Label16;
         TButton *CancelButton;
         TButton *ConfirmButton;
         TDBComboBox *DBComboBox1;
+        TDBComboBox *DBComboBox2;
+        TEdit *Edit1;
+        TTabSheet *ReasonsSheet;
+        TDBGrid *DBGrid3;
+        TGroupBox *ReasonGB;
+        TButton *RConfirmButton;
+        TButton *RCancelButton;
+        TDBEdit *DBEdit2;
+        TLabel *Label17;
+        TMenuItem *N6;
         void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
         void __fastcall AddButtonClick(TObject *Sender);
         void __fastcall PageControl1Change(TObject *Sender);
@@ -91,9 +99,14 @@ __published:	// IDE-managed Components
         void __fastcall DBEdit4Click(TObject *Sender);
         void __fastcall DBEdit5Click(TObject *Sender);
         void __fastcall DBEdit6Click(TObject *Sender);
-        void __fastcall DBEdit7Click(TObject *Sender);
         void __fastcall DBComboBox1Click(TObject *Sender);
         void __fastcall DBMemo1Click(TObject *Sender);
+        void __fastcall AguideExecute(TObject *Sender);
+        void __fastcall DBComboBox2Click(TObject *Sender);
+        void __fastcall RConfirmButtonClick(TObject *Sender);
+        void __fastcall Edit1Click(TObject *Sender);
+        void __fastcall DBEdit2Click(TObject *Sender);
+        void __fastcall RCancelButtonClick(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
         __fastcall TMainForm(TComponent* Owner);
