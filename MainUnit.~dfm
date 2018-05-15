@@ -3,6 +3,7 @@ object MainForm: TMainForm
   Top = 222
   Width = 933
   Height = 523
+  VertScrollBar.Position = 416
   Caption = 'MainForm'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -18,7 +19,7 @@ object MainForm: TMainForm
   TextHeight = 13
   object PageControl1: TPageControl
     Left = 8
-    Top = 48
+    Top = -368
     Width = 473
     Height = 345
     ActivePage = ReasonsSheet
@@ -147,7 +148,7 @@ object MainForm: TMainForm
   end
   object GroupBox: TGroupBox
     Left = 328
-    Top = 416
+    Top = 0
     Width = 305
     Height = 465
     Caption = 'GroupBox'
@@ -237,7 +238,7 @@ object MainForm: TMainForm
       Top = 144
       Width = 121
       Height = 21
-      DataField = 'DateOfBirth'
+      DataField = 'DateOfDeath'
       DataSource = DataModule1.DeadsDS
       TabOrder = 3
       OnClick = DBEdit5Click
@@ -313,7 +314,7 @@ object MainForm: TMainForm
   end
   object AddButton: TButton
     Left = 24
-    Top = 424
+    Top = 8
     Width = 75
     Height = 25
     Caption = 'AddButton'
@@ -322,7 +323,7 @@ object MainForm: TMainForm
   end
   object EditButton: TButton
     Left = 120
-    Top = 424
+    Top = 8
     Width = 75
     Height = 25
     Caption = 'EditButton'
@@ -331,7 +332,7 @@ object MainForm: TMainForm
   end
   object DeleteButton: TButton
     Left = 216
-    Top = 424
+    Top = 8
     Width = 75
     Height = 25
     Caption = 'DeleteButton'
@@ -340,7 +341,7 @@ object MainForm: TMainForm
   end
   object InformationPanel: TPanel
     Left = 520
-    Top = 36
+    Top = -380
     Width = 369
     Height = 377
     Caption = 'InformationPanel'
@@ -472,7 +473,7 @@ object MainForm: TMainForm
   end
   object ReasonGB: TGroupBox
     Left = 40
-    Top = 475
+    Top = 59
     Width = 217
     Height = 121
     Caption = 'ReasonGB'
@@ -530,7 +531,7 @@ object MainForm: TMainForm
         Action = Aguide
       end
       object N6: TMenuItem
-        Action = Aopen
+        Action = AopenRep
       end
     end
   end

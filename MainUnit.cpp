@@ -551,6 +551,8 @@ void __fastcall TMainForm::PageControl1Change(TObject *Sender)
                 MainForm->Height = 540;
                 MainForm->Width = 540;
         }
+        DBComboBox1->Clear();
+        DBComboBox2->Clear();
 }
 //---------------------------------------------------------------------------
 /*                         ActionList                                      */
@@ -637,10 +639,7 @@ void __fastcall TMainForm::DBComboBox2Click(TObject *Sender)
         }
         else
         {
-                Edit1->Hide();
-        }
-}
-//-------------------------------------//---------------------------------------------------------------------------
+                Edit1->//---------------------------------------------------------------------------
 
 #ifndef ReportUnitH
 #define ReportUnitH
@@ -652,6 +651,12 @@ void __fastcall TMainForm::DBComboBox2Click(TObject *Sender)
 #include <ExtCtrls.hpp>
 #include <QuickRpt.hpp>
 #include <QRCtrls.hpp>
+#include <Chart.hpp>
+#include <DbChart.hpp>
+#include <QRTEE.hpp>
+#include <Series.hpp>
+#include <TeEngine.hpp>
+#include <TeeProcs.hpp>
 //---------------------------------------------------------------------------
 class TReportForm : public TForm
 {
@@ -659,13 +664,11 @@ __published:	// IDE-managed Components
         TQuickRep *QuickRep1;
         TQRBand *QRBand1;
         TQRLabel *QRLabel1;
-        TQRLabel *QRLabel2;
-        TQRMemo *QRMemo1;
-        TQRMemo *QRMemo2;
-        TQRStringsBand *QRStringsBand1;
-        TQRStringsBand *QRStringsBand2;
         TQRLabel *QRLabel3;
         TQRMemo *QRMemo3;
-        TQRMemo *QRMemo4;
-        TQRMemo *QRMemo5;
-        TQRString
+        TQRLabel *QRLabel4;
+        TQRMemo *QRMemo6;
+        TQRLabel *QRLabel2;
+        TQRMemo *QRMemo1;
+        TQRGroup *QRGroup1;
+        TQRGroup

@@ -28,38 +28,69 @@ void __fastcall TReportForm::FormClose(TObject *Sender,
 //---------------------------------------------------------------------------
 void __fastcall TReportForm::FormShow(TObject *Sender)
 {
+        Word year,month,day;
+        Word Year,Month,Day;
+        QRGroup1->Height = 80;
+        QRGroup2->Height = 80;
+        QRGroup3->Height = 80;
+        QRMemo1->Height = 24;
+        QRMemo3->Height = 24;
+        QRMemo6->Height = 24;
         DataModule1->DeadsTable->Active = true;
         DataModule1->DeadsTable->Filtered = true;
         DataModule1->DeadsTable->Filter = "Sex='Муржской'";
         DataModule1->DeadsTable->First();
-        for (int i = 1; i <= DataModule1->DeadsTable->RecordCount; i++)
+        QRMemo1->Lines->Add("Мужской:");
+        if (DataModule1->DeadsTable->RecordCount == 0)
         {
-                QRMemo1->Lines->Add(DataModule1->DeadsTable->FieldByName("FIO")->AsString);
-                DataModule1->DeadsTable->Next();
+                QRMemo1->Lines->Add("Нету записей");
+                QRMemo1->Height += 24;
+        }
+        else
+        {
+                int menLife = 0;
+                for (int i = 1; i <= DataModule1->DeadsTable->RecordCount; i++)
+                {
+                        DecodeDate(DataModule1->DeadsTable->FieldByName("DateOfBirth")->Value,Year,Month,Day);
+                        DecodeDate(DataModule1->DeadsTable->FieldByName("DateOfDeath")->Value,year,month,day);
+                        QRMemo1->Lines->Add(DataModule1->DeadsTable->FieldByName("FIO")->AsString);
+                        menLife += (year - Year);
+                        DataModule1->DeadsTable->Next();
+                        QRMemo1->Height += 30;
+                }
+                menLife /= DataModule1->DeadsTable->RecordCount;
+                QRLabel5->Caption = "Средняя продолжительность жизни у мужчин: " + IntToStr(menLife);
         }
         DataModule1->DeadsTable->Filtered = false;
         DataModule1->DeadsTable->Filtered = true;
 
         DataModule1->DeadsTable->Filter = "Sex='Женский'";
-        for (int i = 1; i <= DataModule1->DeadsTable->RecordCount; i++)
+        QRMemo1->Lines->Add("Женский: ");
+        if (DataModule1->DeadsTable->RecordCount == 0)
         {
-                QRMemo2->Lines->Add(DataModule1->DeadsTable->FieldByName("FIO")->AsString);
-                DataModule1->DeadsTable->Next();
+                QRMemo1->Lines->Add("Нету записей");
+                QRMemo1->Height += 24;
         }
-        if (QRMemo1->Height > QRMemo2->Height)
+        else
         {
-                QRStringsBand1->Height += QRMemo1->Height;
+                int womenLife = 0;
+                for (int i = 1; i <= DataModule1->DeadsTable->RecordCount; i++)
+                {
+                        DecodeDate(DataModule1->DeadsTable->FieldByName("DateOfBirth")->Value,Year,Month,Day);
+                        DecodeDate(DataModule1->DeadsTable->FieldByName("DateOfDeath")->Value,year,month,day);
+                        QRMemo1->Lines->Add(DataModule1->DeadsTable->FieldByName("FIO")->AsString);
+                        DataModule1->DeadsTable->Next();
+                        womenLife += (year - Year);
+                        QRMemo1->Height += 30;
+                }
+                womenLife /= DataModule1->DeadsTable->RecordCount;
+                QRLabel6->Caption = "Средняя продолжительность жизни у женшин: " + IntToStr(womenLife);
         }
-        else if (QRMemo1->Height < QRMemo2->Height)
-        {
-                QRStringsBand1->Height += QRMemo2->Height;
-        }
+        QRGroup1->Height += QRMemo1->Height;
         DataModule1->DeadsTable->Filtered = false;
-        Word year,month,day;
-        Word Year,Month,Day;
         DataModule1->DeadsTable->First();
-        QuickRep1->Preview();
 
+        QRMemo3->Lines->Add("до 25:");
         for (int i = 1; i <= DataModule1->DeadsTable->RecordCount; i++)
         {
                 DecodeDate(DataModule1->DeadsTable->FieldByName("DateOfBirth")->Value,Year,Month,Day);
@@ -67,31 +98,38 @@ void __fastcall TReportForm::FormShow(TObject *Sender)
                 if ((year - Year) <= 25)
                 {
                         QRMemo3->Lines->Add(DataModule1->DeadsTable->FieldByName("FIO")->AsString);
-                }
-                else if ((year - Year) <= 60)
-                {
-                        QRMemo4->Lines->Add(DataModule1->DeadsTable->FieldByName("FIO")->AsString);
-                }
-                else
-                {
-                        QRMemo5->Lines->Add(DataModule1->DeadsTable->FieldByName("FIO")->AsString);
+                        QRMemo3->Height += 30;
                 }
                 DataModule1->DeadsTable->Next();
         }
-        int *height = new int[3];
-        height[0] = QRMemo3->Height;
-        height[1] = QRMemo4->Height;
-        height[2] = QRMemo5->Height;
-        int max = height[0];
-        for (int i = 0; i < 3; i++)
+        QRMemo3->Lines->Add("60:");
+        DataModule1->DeadsTable->First();
+        for (int i = 1; i <= DataModule1->DeadsTable->RecordCount; i++)
         {
-                if (height[i] > max)
+                DecodeDate(DataModule1->DeadsTable->FieldByName("DateOfBirth")->Value,Year,Month,Day);
+                DecodeDate(DataModule1->DeadsTable->FieldByName("DateOfDeath")->Value,year,month,day);
+                if ((year - Year) <= 60 && (year - Year) > 25)
                 {
-                        max = height[i];
+                        QRMemo3->Lines->Add(DataModule1->DeadsTable->FieldByName("FIO")->AsString);
+                        QRMemo3->Height += 30;
                 }
+                DataModule1->DeadsTable->Next();
         }
-        delete height;
-        QRStringsBand2->Height += max;
+        DataModule1->DeadsTable->First();
+        QRMemo3->Lines->Add("Старше 60:");
+        for (int i = 1; i <= DataModule1->DeadsTable->RecordCount; i++)
+        {
+                DecodeDate(DataModule1->DeadsTable->FieldByName("DateOfBirth")->Value,Year,Month,Day);
+                DecodeDate(DataModule1->DeadsTable->FieldByName("DateOfDeath")->Value,year,month,day);
+                if ((year - Year) > 60)
+                {
+                        QRMemo3->Lines->Add(DataModule1->DeadsTable->FieldByName("FIO")->AsString);
+                        QRMemo3->Height += 30;
+                }
+                DataModule1->DeadsTable->Next();
+        }
+        int max;
+        QRGroup2->Height += QRMemo3->Height;
         DataModule1->ReasonTable->Active = true;
         DataModule1->DeadsTable->Filtered = true;
         int size = DataModule1->ReasonTable->RecordCount;
@@ -128,9 +166,51 @@ void __fastcall TReportForm::FormShow(TObject *Sender)
         for (int i = 1; i <= size; i++)
         {
                 QRMemo6->Lines->Add(DataModule1->ReasonTable->FieldByName("ReasonOfDeath")->AsString + ": " + IntToStr(reasons[i-1]));
+                QRMemo6->Height += 24;
                 DataModule1->ReasonTable->Next();
         }
-        QRStringsBand3->Height += QRMemo6->Height;
+        QRGroup3->Height += QRMemo6->Height;
+
+        DataModule1->DeadsTable->First();
+        max = 0;
+        for (int i = 1; i <= DataModule1->DeadsTable->RecordCount; i++)
+        {
+                DecodeDate(DataModule1->DeadsTable->FieldByName("DateOfBirth")->Value,Year,Month,Day);
+                DecodeDate(DataModule1->DeadsTable->FieldByName("DateOfDeath")->Value,year,month,day);
+                if (max < (year - Year))
+                {
+                        max = (year - Year);
+                }
+                DataModule1->DeadsTable->Next();
+        }
+
+        DataModule1->DeadsTable->First();
+        int count = 0;
+        int i = 1;
+
+        while (i <= max)
+        {
+                DecodeDate(DataModule1->DeadsTable->FieldByName("DateOfBirth")->Value,Year,Month,Day);
+                DecodeDate(DataModule1->DeadsTable->FieldByName("DateOfDeath")->Value,year,month,day);
+                if ( i == (year - Year))
+                {
+                        count++;
+                        if (DataModule1->DeadsTable->Eof)
+                        {
+                                count--;
+                                QRChart1->Chart->Series[0]->AddXY(i, count);
+                                i++;
+
+                        }
+                        DataModule1->DeadsTable->Next();
+                }
+                else
+                {
+                        QRChart1->Chart->Series[0]->AddXY(i, count);
+                        count = 0;
+                        i++;
+                }
+        }
         QuickRep1->Preview();
 }
 //---------------------------------------------------------------------------

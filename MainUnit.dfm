@@ -3,7 +3,7 @@ object MainForm: TMainForm
   Top = 222
   Width = 933
   Height = 523
-  VertScrollBar.Position = 416
+  VertScrollBar.Position = 6
   Caption = 'MainForm'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -19,7 +19,7 @@ object MainForm: TMainForm
   TextHeight = 13
   object PageControl1: TPageControl
     Left = 8
-    Top = -368
+    Top = 42
     Width = 473
     Height = 345
     ActivePage = ReasonsSheet
@@ -148,7 +148,7 @@ object MainForm: TMainForm
   end
   object GroupBox: TGroupBox
     Left = 328
-    Top = 0
+    Top = 410
     Width = 305
     Height = 465
     Caption = 'GroupBox'
@@ -314,7 +314,7 @@ object MainForm: TMainForm
   end
   object AddButton: TButton
     Left = 24
-    Top = 8
+    Top = 418
     Width = 75
     Height = 25
     Caption = 'AddButton'
@@ -323,7 +323,7 @@ object MainForm: TMainForm
   end
   object EditButton: TButton
     Left = 120
-    Top = 8
+    Top = 418
     Width = 75
     Height = 25
     Caption = 'EditButton'
@@ -332,7 +332,7 @@ object MainForm: TMainForm
   end
   object DeleteButton: TButton
     Left = 216
-    Top = 8
+    Top = 418
     Width = 75
     Height = 25
     Caption = 'DeleteButton'
@@ -341,7 +341,7 @@ object MainForm: TMainForm
   end
   object InformationPanel: TPanel
     Left = 520
-    Top = -380
+    Top = 30
     Width = 369
     Height = 377
     Caption = 'InformationPanel'
@@ -473,7 +473,7 @@ object MainForm: TMainForm
   end
   object ReasonGB: TGroupBox
     Left = 40
-    Top = 59
+    Top = 469
     Width = 217
     Height = 121
     Caption = 'ReasonGB'
@@ -501,62 +501,54 @@ object MainForm: TMainForm
       Height = 25
       Caption = 'RCancelButton'
       TabOrder = 1
-      OnClick = RCancelButtonClick
-    end
-    object DBEdit2: TDBEdit
-      Left = 88
-      Top = 32
-      Width = 121
-      Height = 21
-      DataField = 'ReasonOfDeath'
-      DataSource = DataModule1.ReasonDS
-      TabOrder = 2
-      OnClick = DBEdit2Click
-    end
-  end
-  object MainMenu1: TMainMenu
-    Top = 2
-    object N1: TMenuItem
-      Caption = #1060#1072#1081#1083
-      object N2: TMenuItem
-        Action = Aopen
+               529.166666666667
+          0
+          317.5
+          1907.64583333333)
+        object QRDBChart1: TQRDBChart
+          Left = -1
+          Top = -1
+          Width = 1
+          Height = 1
+          BackWall.Brush.Color = clWhite
+          BackWall.Brush.Style = bsClear
+          Title.Text.Strings = (
+            'TQRChart')
+          object Series1: TLineSeries
+            Marks.ArrowLength = 8
+            Marks.Visible = False
+            SeriesColor = clRed
+            Pointer.InflateMargins = True
+            Pointer.Style = psRectangle
+            Pointer.Visible = False
+            XValues.DateTime = False
+            XValues.Name = 'X'
+            XValues.Multiplier = 1
+            XValues.Order = loAscending
+            YValues.DateTime = False
+            YValues.Name = 'Y'
+            YValues.Multiplier = 1
+            YValues.Order = loNone
+          end
+        end
       end
-      object N3: TMenuItem
-        Action = Aexit
-      end
-    end
-    object N4: TMenuItem
-      Caption = #1057#1087#1088#1072#1074#1082#1072
-      object N5: TMenuItem
-        Action = Aguide
-      end
-      object N6: TMenuItem
-        Action = AopenRep
-      end
-    end
-  end
-  object ActionList1: TActionList
-    Left = 40
-    Top = 2
-    object Aopen: TAction
-      Category = #1060#1072#1081#1083
-      Caption = #1054#1090#1082#1088#1099#1090#1100
-      OnExecute = AopenExecute
-    end
-    object Aexit: TAction
-      Category = #1060#1072#1081#1083
-      Caption = #1042#1099#1093#1086#1076
-      OnExecute = AexitExecute
-    end
-    object AopenRep: TAction
-      Category = #1057#1087#1088#1072#1074#1082#1072
-      Caption = #1054#1090#1082#1088#1099#1090#1100' '#1086#1090#1095#1077#1090
-      OnExecute = AopenRepExecute
-    end
-    object Aguide: TAction
-      Category = #1057#1087#1088#1072#1074#1082#1072
-      Caption = #1056#1091#1082#1086#1074#1086#1076#1089#1090#1074#1086
-      OnExecute = AguideExecute
-    end
-  end
-end
+      object QRLabel7: TQRLabel
+        Left = 8
+        Top = 88
+        Width = 296
+        Height = 17
+        Frame.Color = clBlack
+        Frame.DrawTop = False
+        Frame.DrawBottom = False
+        Frame.DrawLeft = False
+        Frame.DrawRight = False
+        Size.Values = (
+          44.9791666666667
+          21.1666666666667
+          232.833333333333
+          783.166666666667)
+        Alignment = taLeftJustify
+        AlignToBand = False
+        AutoSize = True
+        AutoStretch = False
+        Caption = #1050#1086#1083#1080#1095#1077#1089#1090#1074#1086'
