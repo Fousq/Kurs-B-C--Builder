@@ -39,6 +39,8 @@ __published:	// IDE-managed Components
         TQRChart *QRChart1;
         TQRLabel *QRLabel7;
         TLineSeries *Series1;
+        TQRLabel *QRLabel8;
+        TQRLabel *QRLabel9;
         void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
         void __fastcall FormShow(TObject *Sender);
 private:	// User declarations
