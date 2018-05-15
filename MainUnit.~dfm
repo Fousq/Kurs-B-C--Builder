@@ -1,9 +1,8 @@
 object MainForm: TMainForm
   Left = 210
   Top = 222
-  Width = 933
-  Height = 523
-  VertScrollBar.Position = 416
+  Width = 1029
+  Height = 757
   Caption = 'MainForm'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -19,15 +18,15 @@ object MainForm: TMainForm
   TextHeight = 13
   object PageControl1: TPageControl
     Left = 8
-    Top = -368
+    Top = 48
     Width = 473
-    Height = 345
+    Height = 348
     ActivePage = ReasonsSheet
     TabIndex = 2
     TabOrder = 0
     OnChange = PageControl1Change
     object NewbornsSheet: TTabSheet
-      Caption = 'NewbornsSheet'
+      Caption = #1053#1086#1074#1086#1088#1086#1078#1076#1077#1085#1085#1099#1077
       object DBGrid1: TDBGrid
         Left = 0
         Top = 0
@@ -45,32 +44,37 @@ object MainForm: TMainForm
           item
             Expanded = False
             FieldName = 'FIO'
+            Title.Caption = #1060#1072#1084#1080#1083#1080#1103', '#1048#1084#1103', '#1054#1090#1095#1077#1089#1074#1086
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'Sex'
+            Title.Caption = #1055#1086#1083
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'DateOfBirth'
+            Title.Caption = #1044#1072#1090#1072' '#1088#1086#1078#1076#1077#1085#1080#1103
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'PlaceOfBirth'
+            Title.Caption = #1052#1077#1089#1090#1086' '#1088#1086#1078#1076#1077#1085#1080#1103
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'InformationAboutParents'
+            Title.Caption = #1048#1085#1092#1086#1088#1084#1072#1094#1080#1103' '#1086#1073' '#1088#1086#1076#1080#1090#1077#1083#1103#1093
             Visible = True
           end>
       end
     end
     object DeadsSheet: TTabSheet
-      Caption = 'DeadsSheet'
+      Caption = #1059#1084#1077#1088#1096#1080#1077
       ImageIndex = 1
       object DBGrid2: TDBGrid
         Left = 0
@@ -88,42 +92,49 @@ object MainForm: TMainForm
           item
             Expanded = False
             FieldName = 'FIO'
+            Title.Caption = #1060#1072#1084#1080#1083#1080#1103', '#1048#1084#1103', '#1054#1090#1095#1077#1089#1090#1074#1086
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'Sex'
+            Title.Caption = #1055#1086#1083
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'DateOfBirth'
+            Title.Caption = #1044#1072#1090#1072' '#1088#1086#1078#1076#1077#1085#1080#1103
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'PlaceOfBirth'
+            Title.Caption = #1052#1077#1089#1090#1086' '#1088#1086#1078#1076#1077#1085#1080#1103
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'DateOfDeath'
+            Title.Caption = #1044#1072#1090#1072' '#1089#1084#1077#1088#1090#1080
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'PlaceOfDeath'
+            Title.Caption = #1052#1077#1089#1090#1086' '#1089#1084#1077#1088#1090#1080
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'ReasonOfDeath'
+            Title.Caption = #1055#1088#1080#1095#1080#1085#1099' '#1089#1084#1077#1088#1090#1080
             Visible = True
           end>
       end
     end
     object ReasonsSheet: TTabSheet
-      Caption = 'ReasonsSheet'
+      Caption = #1055#1088#1080#1095#1080#1085#1099' '#1089#1084#1077#1088#1090#1080
       ImageIndex = 2
       object DBGrid3: TDBGrid
         Left = 0
@@ -141,6 +152,7 @@ object MainForm: TMainForm
           item
             Expanded = False
             FieldName = 'ReasonOfDeath'
+            Title.Caption = #1055#1088#1080#1095#1080#1085#1099' '#1089#1084#1077#1088#1090#1080
             Visible = True
           end>
       end
@@ -148,7 +160,7 @@ object MainForm: TMainForm
   end
   object GroupBox: TGroupBox
     Left = 328
-    Top = 0
+    Top = 416
     Width = 305
     Height = 465
     Caption = 'GroupBox'
@@ -268,7 +280,7 @@ object MainForm: TMainForm
       Top = 432
       Width = 75
       Height = 25
-      Caption = 'CancelButton'
+      Caption = #1054#1090#1084#1077#1085#1072
       TabOrder = 6
       OnClick = CancelButtonClick
     end
@@ -277,7 +289,7 @@ object MainForm: TMainForm
       Top = 432
       Width = 75
       Height = 25
-      Caption = 'ConfirmButton'
+      Caption = #1055#1086#1076#1090#1074#1077#1088#1076#1080#1090#1100
       TabOrder = 7
       OnClick = ConfirmButtonClick
     end
@@ -314,37 +326,36 @@ object MainForm: TMainForm
   end
   object AddButton: TButton
     Left = 24
-    Top = 8
+    Top = 424
     Width = 75
     Height = 25
-    Caption = 'AddButton'
+    Caption = #1044#1086#1073#1072#1074#1080#1090#1100
     TabOrder = 2
     OnClick = AddButtonClick
   end
   object EditButton: TButton
     Left = 120
-    Top = 8
+    Top = 424
     Width = 75
     Height = 25
-    Caption = 'EditButton'
+    Caption = #1048#1079#1084#1077#1085#1080#1090#1100
     TabOrder = 3
     OnClick = EditButtonClick
   end
   object DeleteButton: TButton
     Left = 216
-    Top = 8
+    Top = 424
     Width = 75
     Height = 25
-    Caption = 'DeleteButton'
+    Caption = #1059#1076#1072#1083#1080#1090#1100
     TabOrder = 4
     OnClick = DeleteButtonClick
   end
   object InformationPanel: TPanel
     Left = 520
-    Top = -380
+    Top = 36
     Width = 369
     Height = 377
-    Caption = 'InformationPanel'
     TabOrder = 5
     object Label6: TLabel
       Left = 16
@@ -473,7 +484,7 @@ object MainForm: TMainForm
   end
   object ReasonGB: TGroupBox
     Left = 40
-    Top = 59
+    Top = 475
     Width = 217
     Height = 121
     Caption = 'ReasonGB'
@@ -490,7 +501,7 @@ object MainForm: TMainForm
       Top = 88
       Width = 75
       Height = 25
-      Caption = 'RConfirmButton'
+      Caption = #1055#1086#1076#1090#1074#1077#1088#1076#1080#1090#1100
       TabOrder = 0
       OnClick = RConfirmButtonClick
     end
@@ -499,7 +510,7 @@ object MainForm: TMainForm
       Top = 88
       Width = 75
       Height = 25
-      Caption = 'RCancelButton'
+      Caption = #1054#1090#1084#1077#1085#1072
       TabOrder = 1
       OnClick = RCancelButtonClick
     end

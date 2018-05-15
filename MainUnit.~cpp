@@ -551,6 +551,8 @@ void __fastcall TMainForm::PageControl1Change(TObject *Sender)
                 MainForm->Height = 540;
                 MainForm->Width = 540;
         }
+        DBComboBox1->Clear();
+        DBComboBox2->Clear();
 }
 //---------------------------------------------------------------------------
 /*                         ActionList                                      */

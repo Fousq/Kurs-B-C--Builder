@@ -1,9 +1,9 @@
 object ReportForm: TReportForm
-  Left = 233
-  Top = 266
+  Left = 198
+  Top = 173
   Width = 885
   Height = 640
-  Caption = 'ReportForm'
+  Caption = #1054#1090#1095#1077#1090
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText

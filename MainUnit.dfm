@@ -1,10 +1,9 @@
 object MainForm: TMainForm
   Left = 210
   Top = 222
-  Width = 933
-  Height = 523
-  VertScrollBar.Position = 6
-  Caption = 'MainForm'
+  Width = 1029
+  Height = 757
+  Caption = #1043#1083#1072#1074#1085#1086#1077' '#1086#1082#1085#1086
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -19,15 +18,15 @@ object MainForm: TMainForm
   TextHeight = 13
   object PageControl1: TPageControl
     Left = 8
-    Top = 42
+    Top = 48
     Width = 473
-    Height = 345
+    Height = 348
     ActivePage = ReasonsSheet
     TabIndex = 2
     TabOrder = 0
     OnChange = PageControl1Change
     object NewbornsSheet: TTabSheet
-      Caption = 'NewbornsSheet'
+      Caption = #1053#1086#1074#1086#1088#1086#1078#1076#1077#1085#1085#1099#1077
       object DBGrid1: TDBGrid
         Left = 0
         Top = 0
@@ -45,32 +44,37 @@ object MainForm: TMainForm
           item
             Expanded = False
             FieldName = 'FIO'
+            Title.Caption = #1060#1072#1084#1080#1083#1080#1103', '#1048#1084#1103', '#1054#1090#1095#1077#1089#1074#1086
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'Sex'
+            Title.Caption = #1055#1086#1083
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'DateOfBirth'
+            Title.Caption = #1044#1072#1090#1072' '#1088#1086#1078#1076#1077#1085#1080#1103
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'PlaceOfBirth'
+            Title.Caption = #1052#1077#1089#1090#1086' '#1088#1086#1078#1076#1077#1085#1080#1103
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'InformationAboutParents'
+            Title.Caption = #1048#1085#1092#1086#1088#1084#1072#1094#1080#1103' '#1086#1073' '#1088#1086#1076#1080#1090#1077#1083#1103#1093
             Visible = True
           end>
       end
     end
     object DeadsSheet: TTabSheet
-      Caption = 'DeadsSheet'
+      Caption = #1059#1084#1077#1088#1096#1080#1077
       ImageIndex = 1
       object DBGrid2: TDBGrid
         Left = 0
@@ -88,42 +92,49 @@ object MainForm: TMainForm
           item
             Expanded = False
             FieldName = 'FIO'
+            Title.Caption = #1060#1072#1084#1080#1083#1080#1103', '#1048#1084#1103', '#1054#1090#1095#1077#1089#1090#1074#1086
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'Sex'
+            Title.Caption = #1055#1086#1083
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'DateOfBirth'
+            Title.Caption = #1044#1072#1090#1072' '#1088#1086#1078#1076#1077#1085#1080#1103
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'PlaceOfBirth'
+            Title.Caption = #1052#1077#1089#1090#1086' '#1088#1086#1078#1076#1077#1085#1080#1103
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'DateOfDeath'
+            Title.Caption = #1044#1072#1090#1072' '#1089#1084#1077#1088#1090#1080
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'PlaceOfDeath'
+            Title.Caption = #1052#1077#1089#1090#1086' '#1089#1084#1077#1088#1090#1080
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'ReasonOfDeath'
+            Title.Caption = #1055#1088#1080#1095#1080#1085#1099' '#1089#1084#1077#1088#1090#1080
             Visible = True
           end>
       end
     end
     object ReasonsSheet: TTabSheet
-      Caption = 'ReasonsSheet'
+      Caption = #1055#1088#1080#1095#1080#1085#1099' '#1089#1084#1077#1088#1090#1080
       ImageIndex = 2
       object DBGrid3: TDBGrid
         Left = 0
@@ -141,6 +152,7 @@ object MainForm: TMainForm
           item
             Expanded = False
             FieldName = 'ReasonOfDeath'
+            Title.Caption = #1055#1088#1080#1095#1080#1085#1099' '#1089#1084#1077#1088#1090#1080
             Visible = True
           end>
       end
@@ -148,7 +160,7 @@ object MainForm: TMainForm
   end
   object GroupBox: TGroupBox
     Left = 328
-    Top = 410
+    Top = 416
     Width = 305
     Height = 465
     Caption = 'GroupBox'
@@ -268,7 +280,7 @@ object MainForm: TMainForm
       Top = 432
       Width = 75
       Height = 25
-      Caption = 'CancelButton'
+      Caption = #1054#1090#1084#1077#1085#1072
       TabOrder = 6
       OnClick = CancelButtonClick
     end
@@ -277,7 +289,7 @@ object MainForm: TMainForm
       Top = 432
       Width = 75
       Height = 25
-      Caption = 'ConfirmButton'
+      Caption = #1055#1086#1076#1090#1074#1077#1088#1076#1080#1090#1100
       TabOrder = 7
       OnClick = ConfirmButtonClick
     end
@@ -314,37 +326,36 @@ object MainForm: TMainForm
   end
   object AddButton: TButton
     Left = 24
-    Top = 418
+    Top = 424
     Width = 75
     Height = 25
-    Caption = 'AddButton'
+    Caption = #1044#1086#1073#1072#1074#1080#1090#1100
     TabOrder = 2
     OnClick = AddButtonClick
   end
   object EditButton: TButton
     Left = 120
-    Top = 418
+    Top = 424
     Width = 75
     Height = 25
-    Caption = 'EditButton'
+    Caption = #1048#1079#1084#1077#1085#1080#1090#1100
     TabOrder = 3
     OnClick = EditButtonClick
   end
   object DeleteButton: TButton
     Left = 216
-    Top = 418
+    Top = 424
     Width = 75
     Height = 25
-    Caption = 'DeleteButton'
+    Caption = #1059#1076#1072#1083#1080#1090#1100
     TabOrder = 4
     OnClick = DeleteButtonClick
   end
   object InformationPanel: TPanel
     Left = 520
-    Top = 30
+    Top = 36
     Width = 369
     Height = 377
-    Caption = 'InformationPanel'
     TabOrder = 5
     object Label6: TLabel
       Left = 16
@@ -437,71 +448,22 @@ object MainForm: TMainForm
     object DBText5: TDBText
       Left = 96
       Top = 112
-      Width = 42
-      Height = 13
-      AutoSize = True
-      DataField = 'DateOfDeath'
-      DataSource = DataModule1.DeadsDS
-    end
-    object DBText6: TDBText
-      Left = 104
-      Top = 136
-      Width = 42
-      Height = 13
-      AutoSize = True
-      DataField = 'PlaceOfDeath'
-      DataSource = DataModule1.DeadsDS
-    end
-    object DBText7: TDBText
-      Left = 112
-      Top = 160
-      Width = 42
-      Height = 13
-      AutoSize = True
-      DataField = 'ReasonOfDeath'
-      DataSource = DataModule1.DeadsDS
-    end
-    object DBText8: TDBText
-      Left = 16
-      Top = 208
-      Width = 345
-      Height = 145
-      DataField = 'InformationAboutParents'
-      DataSource = DataModule1.NewbornsDS
-      WordWrap = True
-    end
-  end
-  object ReasonGB: TGroupBox
-    Left = 40
-    Top = 469
-    Width = 217
-    Height = 121
-    Caption = 'ReasonGB'
-    TabOrder = 6
-    object Label17: TLabel
-      Left = 8
-      Top = 40
-      Width = 82
-      Height = 13
-      Caption = #1053#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077': '
-    end
-    object RConfirmButton: TButton
-      Left = 136
-      Top = 88
-      Width = 75
-      Height = 25
-      Caption = 'RConfirmButton'
-      TabOrder = 0
-      OnClick = RConfirmButtonClick
-    end
-    object RCancelButton: TButton
-      Left = 8
-      Top = 88
-      Width = 75
-      Height = 25
-      Caption = 'RCancelButton'
-      TabOrder = 1
-               529.166666666667
+     alse
+        WordWrap = True
+        FontSize = 14
+      end
+      object QRChart1: TQRChart
+        Left = 0
+        Top = 120
+        Width = 721
+        Height = 200
+        Frame.Color = clBlack
+        Frame.DrawTop = False
+        Frame.DrawBottom = False
+        Frame.DrawLeft = False
+        Frame.DrawRight = False
+        Size.Values = (
+          529.166666666667
           0
           317.5
           1907.64583333333)
@@ -535,20 +497,56 @@ object MainForm: TMainForm
       object QRLabel7: TQRLabel
         Left = 8
         Top = 88
-        Width = 296
-        Height = 17
+        Width = 392
+        Height = 22
         Frame.Color = clBlack
         Frame.DrawTop = False
         Frame.DrawBottom = False
         Frame.DrawLeft = False
         Frame.DrawRight = False
         Size.Values = (
-          44.9791666666667
+          58.2083333333333
           21.1666666666667
           232.833333333333
-          783.166666666667)
+          1037.16666666667)
         Alignment = taLeftJustify
         AlignToBand = False
         AutoSize = True
         AutoStretch = False
-        Caption = #1050#1086#1083#1080#1095#1077#1089#1090#1074#1086'
+        Caption = #1050#1086#1083#1080#1095#1077#1089#1090#1074#1086' '#1091#1084#1077#1088#1096#1080#1093' '#1074' '#1086#1087#1088#1077#1076#1077#1083#1077#1085#1085#1086#1084' '#1074#1086#1079#1088#1072#1089#1090#1077': '
+        Color = clWhite
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -19
+        Font.Name = 'Times New Roman'
+        Font.Style = []
+        ParentFont = False
+        Transparent = False
+        WordWrap = True
+        FontSize = 14
+      end
+      object QRLabel8: TQRLabel
+        Left = 8
+        Top = 360
+        Width = 78
+        Height = 22
+        Frame.Color = clBlack
+        Frame.DrawTop = False
+        Frame.DrawBottom = False
+        Frame.DrawLeft = False
+        Frame.DrawRight = False
+        Size.Values = (
+          58.2083333333333
+          21.1666666666667
+          952.5
+          206.375)
+        Alignment = taLeftJustify
+        AlignToBand = False
+        AutoSize = True
+        AutoStretch = False
+        Caption = 'QRLabel8'
+        Color = clWhite
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -19
+        Font.Name = 'Times New Roman'

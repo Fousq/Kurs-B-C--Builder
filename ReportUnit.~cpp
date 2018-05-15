@@ -159,6 +159,7 @@ void __fastcall TReportForm::FormShow(TObject *Sender)
                         DataModule1->DeadsTable->Next();
                 }
                 QRMemo3->Lines->Add("60:");
+                QRMemo3->Height += 24;
                 DataModule1->DeadsTable->First();
                 for (int i = 1; i <= DataModule1->DeadsTable->RecordCount; i++)
                 {
@@ -173,6 +174,7 @@ void __fastcall TReportForm::FormShow(TObject *Sender)
                 }
                 DataModule1->DeadsTable->First();
                 QRMemo3->Lines->Add("Старше 60:");
+                QRMemo3->Height += 24;
                 for (int i = 1; i <= DataModule1->DeadsTable->RecordCount; i++)
                 {
                         DecodeDate(DataModule1->DeadsTable->FieldByName("DateOfBirth")->Value,Year,Month,Day);
@@ -286,15 +288,15 @@ void __fastcall TReportForm::FormShow(TObject *Sender)
                 int level = count - counter;
                 if (level > 0)
                 {
-                        QRLabel8->Caption = "Прирост населения на данный период: " + IntToStr(level);
+                        QRLabel8->Caption = "Прирост населения на данный месяц: " + IntToStr(level);
                 }
                 else if (level < 0)
                 {
-                        QRLabel8->Caption = "Убыль населения на данный период: " + IntToStr(level);
+                        QRLabel8->Caption = "Убыль населения на данный месяц: " + IntToStr(level);
                 }
                 else
                 {
-                        QRLabel8->Caption = "На данный момент нету прироста или убыли населения";
+                        QRLabel8->Caption = "На данный месяц нету прироста или убыли населения";
                 }
 
                 if (cur_month + 1 > 12)
